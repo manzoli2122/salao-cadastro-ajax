@@ -1,6 +1,6 @@
 <?php
 
-namespace Manzoli2122\Salao\Cadastro\Http\Controllers;
+namespace Manzoli2122\Salao\Cadastro\Ajax\Http\Controllers;
 
 use Manzoli2122\Salao\Cadastro\Models\Servico;
 use Manzoli2122\Salao\Cadastro\Http\Controllers\Padroes\StandardAtivoController ;
@@ -11,9 +11,9 @@ class ServicoController extends StandardAtivoController
 
     protected $model;
     protected $name = "Servico";
-    protected $view = "cadastro::servicos";
-    protected $view_apagados = "cadastro::servicos.apagados";
-    protected $route = "servicos";
+    protected $view = "cadastroAjax::servicos";
+    protected $view_apagados = "cadastroAjax::servicos.apagados";
+    protected $route = "servicosAjax";
     protected $logCannel;
 
     public function __construct(Servico $servico){

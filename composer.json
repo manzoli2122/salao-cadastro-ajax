@@ -11,19 +11,19 @@
     ],
     "require": {
         "php": ">=7.0.0",          
-        "manzoli2122/all": "dev-master"
+        "manzoli2122/opensource": "dev-master"
     },
     
     "autoload": {
         
         "psr-4": {
-            "Manzoli2122\\Salao\\Cadastro\\": "src/Cadastro/"
+            "Manzoli2122\\Salao\\Cadastro\\Ajax\\": "src/Cadastro/Ajax"
         }
     },
     "extra":{
         "laravel":{
             "providers":[
-                "Manzoli2122\\Salao\\Cadastro\\CadastroServiceProvider"
+                "Manzoli2122\\Salao\\Cadastro\\Ajax\\CadastroAjaxServiceProvider"
             ]
             
         }

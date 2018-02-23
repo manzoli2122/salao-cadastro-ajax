@@ -1,6 +1,6 @@
 <?php
 
-namespace Manzoli2122\Salao\Cadastro\Http\Controllers;
+namespace Manzoli2122\Salao\Cadastro\Ajax\Http\Controllers;
 
 use Manzoli2122\Salao\Cadastro\Models\Produto;
 use Manzoli2122\Salao\Cadastro\Http\Controllers\Padroes\StandardAtivoController ;
@@ -13,9 +13,9 @@ class ProdutoController extends StandardAtivoController
 
     protected $model;
     protected $name = "Produto";
-    protected $view = "cadastro::produtos";
-    protected $view_apagados = "cadastro::produtos.apagados";
-    protected $route = "produtos";
+    protected $view = "cadastroAjax::produtos";
+    protected $view_apagados = "cadastroAjax::produtos.apagados";
+    protected $route = "produtosAjax";
     protected $logCannel;
 
     
