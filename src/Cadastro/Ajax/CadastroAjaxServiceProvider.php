@@ -15,7 +15,7 @@ class CadastroAjaxServiceProvider extends ServiceProvider
     {
         // Publish config files
         $this->publishes([
-            __DIR__.'/../config/config.php' =>  config_path('cadastroAjax.php'), 
+            __DIR__.'/../../config/config.php' =>  config_path('cadastroAjax.php'), 
         ], 'cadastroAjax_config');
         $this->mapWebRoutes();     
         $this->loadViewsFrom(__DIR__.'/Views', 'cadastroAjax');
@@ -43,7 +43,7 @@ class CadastroAjaxServiceProvider extends ServiceProvider
     private function mergeConfig()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/config.php', 'cadastroAjax'
+            __DIR__.'/../../config/config.php', 'cadastroAjax'
         );
     }
 
