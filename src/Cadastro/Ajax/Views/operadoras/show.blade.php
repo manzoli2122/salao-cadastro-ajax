@@ -41,7 +41,7 @@
                     <i class="fa fa-pencil"></i> Editar
                 </a>
             @endpermissao
-            <a class="btn btn-default" href="{{ URL::previous() }}"><i class="fa fa-reply"></i> Voltar</a>
+            <a class="btn btn-default" href="{{ URL::previous() }}"><i class="fa fa-"></i> Voltar</a>
         </div>
     </div>
 </div>
