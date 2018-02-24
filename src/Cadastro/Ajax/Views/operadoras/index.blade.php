@@ -1,7 +1,7 @@
 @extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
 
 @section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )
-	Listagem dos Operadoras	r		
+	Listagem dos Operadoras	
 @endsection
 
 
@@ -25,11 +25,11 @@
 
 
 <?php 
-	$table = '<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;"><table class="table table-bordered table-striped table-hover" id="datatable"><thead>	<tr><th style="max-width:20px">ID</th><th pesquisavel>Nome</th><th>Porc. Credito</th><th>Porc. Cred. Parc.</th><th>Porc. Debito</th><th>Máx. de Parcelas</th><th class="align-center" style="width:120px">Ações</th></tr></thead></table></div>' ;
+	$table = '<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;"><table class="table table-bordered table-striped table-hover" id="datatable"><thead>	<tr><th style="max-width:20px">ID</th><th pesquisavel>Nome</th><th>Porc. Credito</th><th>Porc. Cred. Parc.</th><th>Porc. Debito</th><th>Máx. de Parcelas</th><th class="align-center" style="width:140px">Ações</th></tr></thead></table></div>' ;
 	$showHead = '<div class="box-body"><div class="alert alert-default alert-dismissible align-center invisivel" id="divAlerta"><label>Excluído</label></div><section class="row text-center dados">';
 	$showFooter = '</section></div><div class="box-footer align-right"> <button type="button" class="btn btn-default"  onclick="userVoltar()" remover-apos-excluir > <i class="fa fa-reply"></i> Cancelar </button> ';
 	
-	?>
+?>
 
 
 <div class="col-xs-12">
@@ -59,7 +59,7 @@
 							if (retorno.erro) {
 								toastErro(retorno.msg);
 							} else {
-								toastSucesso(retorno.msg);
+								//toastSucesso(retorno.msg);
 								funcSucesso(retorno.data);	
 							}
 						},
@@ -73,16 +73,88 @@
 
 
 
+		window.userEditar = function(id, url , funcSucesso = function() {} ) {			
+			alertProcessando();
+			var token = document.head.querySelector('meta[name="csrf-token"]').content;
+			$.ajax({
+				url: url + "/" + id + "/edit",
+				type: 'get',
+				data: { _token: token },
+				success: function(retorno) {
+					alertProcessandoHide();	
+					
+					
+					funcSucesso(retorno.data);	
+					
+				},
+				error: function(erro) {
+					alertProcessandoHide();
+					toastErro("Ocorreu um erro");
+					console.log(erro);
+				}
+			});
+			
+		}
+
+
+
+
+
+		window.userUpdateAjax = function(id, url , funcSucesso = function() {} ) {			
+				alertProcessando();
+				//var token = document.head.querySelector('meta[name="csrf-token"]').content;
+				
+				var dados = $('#form-operadora').serialize();
+				
+				//alert(dados);
+
+				$.ajax({
+					url: url + "/" + id ,
+					type: 'post',
+					data: dados ,
+					success: function(retorno) {
+						alertProcessandoHide();	
+						
+						if (retorno.erro) {
+							
+							document.getElementById("div-box").innerHTML = retorno.data ;
+							for (var i in retorno.msg) {
+								toastErro(retorno.msg[i]);								
+							}
+
+						
+
+						} else {
+							toastSucesso(retorno.msg);
+							funcSucesso(retorno.data);	
+						}
+							
+						
+					},
+					error: function(erro) {
+						alertProcessandoHide();
+						toastErro("Ocorreu um erro");
+						console.log(erro);
+					}
+				});		
+
+
+
+		}
+
+
+
 		window.userVoltar = function( ) {				
 			var htmltest = '<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">';				
 			htmltest = htmltest + '</div>';		
 			document.getElementById("div-box").innerHTML = '<?php echo $table; ?>' ;
-			document.getElementById("div-titulo-pagina").innerHTML = "Clientes" ;
+			document.getElementById("div-titulo-pagina").innerHTML = "Listagem dos Operadoras" ;
 			document.getElementById("div-small-content-header").innerHTML = ""  ;				
 			operadoraFunction();
 		}
 
-		window.userExcluir = function(id ) {				
+		window.userExcluir = function(id ) {
+							
 			excluirRecursoPeloId( id , "@lang('msg.conf_excluir_o', ['1' => 'operadora'])", "{{ route('operadoras.apagados') }}", 
                 function(){
                     $('[remover-apos-excluir]').remove();
@@ -91,6 +163,20 @@
             );
 		}
 
+
+
+		window.userUpdate = function(id ) {	
+			//userUpdateAjax
+			
+			userUpdateAjax( id , "{{ route('operadorasAjax.index') }}", 
+                function(data){
+					
+                    //document.getElementById("div-box").innerHTML = data ;
+					//document.getElementById("div-titulo-pagina").innerHTML = 'teste'  ;
+					//userVoltar();
+                }
+            );
+		}
 
 	</script>
 	
@@ -133,6 +219,8 @@
 						}
 					);
 				});
+
+
 				$('[btn-show]').click(function (){					
 					userShow($(this).data('id'), "{{ route('operadorasAjax.index') }}",
 						function(data){
@@ -156,7 +244,21 @@
 							
 						}
 					);                 
-            	});
+				});
+
+
+				$('[btn-editar]').click(function (){					
+					userEditar($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+						function(data){
+							
+							document.getElementById("div-box").innerHTML = data ;
+							document.getElementById("div-titulo-pagina").innerHTML = 'Editar'  ;
+							
+						}
+					);                 
+				});
+				
+
 			});
 		}
 

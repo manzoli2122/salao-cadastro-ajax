@@ -8,9 +8,9 @@
 
 <div class="col-md-12">
     <div class="box box-success">
-        <form method="post" action="{{route('operadoras.store')}}">            
+        <form method="post" action="{{route('operadorasAjax.store')}}">            
             {{csrf_field()}}
-            @include('cadastro::operadoras._form', ['model' => new Manzoli2122\Salao\Cadastro\Models\Operadora()])
+            @include('cadastroAjax::operadoras._form', ['model' => new Manzoli2122\Salao\Cadastro\Models\Operadora()])
             <div class="box-footer align-right">
                 <a class="btn btn-default" href="{{ URL::previous() }}"><i class="fa fa-reply"></i> Cancelar</a>
                 <button type="submit" class="btn btn-success">

@@ -4,7 +4,7 @@
             <div class="form-group {{ $errors->has('nome') ? 'has-error' : ''}}">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" name="nome" placeholder="Nome da Operadora de cartão"
-                    value="{{$model->nome or old('nome')}}">
+                    value="{{ $errors->has('nome') ? $request->input('nome') : $model->nome  }}">
                 {!! $errors->first('nome', '<p class="help-block">:message</p>') !!}
             </div>
             <div class="form-group {{ $errors->has('porcentagem_credito') ? 'has-error' : ''}}">
