@@ -44,7 +44,12 @@ class Servico extends Model  implements DataTableJson
     public function rules($id = ''){
         return [
             'nome' => 'required|min:2|max:100',
-            'porcentagem_funcionario' => "required|min:0|max:100|integer",                       
+            'porcentagem_funcionario' => "required|numeric|min:0|max:100",  
+            'valor' => 'required|numeric|min:0',
+            'categoria' => "required", 
+            'duracao_aproximada' => 'digits_between:0,300',
+            'desconto_maximo' => "required|numeric|min:0|max:100", 
+            'observacoes' => 'nullable|alpha_num',                             
         ];
     }
 

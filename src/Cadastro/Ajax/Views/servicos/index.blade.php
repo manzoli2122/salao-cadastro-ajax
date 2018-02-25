@@ -9,7 +9,7 @@
 		<small id="div-small-content-header" ></small>
 		<small style="float: right;">
 			@permissao('servicos-cadastrar')
-				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('servicosAjax.create') , comboboxFunction() }}')" title="Adicionar um novo Serviço">
+				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('servicosAjax.create') }}' , function(){comboboxFunction();}  )" title="Adicionar um novo Serviço">
 					<i class="fa fa-plus"></i> Cadastrar Serviço 
 				</button>	
 			@endpermissao		
@@ -71,7 +71,7 @@
 
 				$('[btn-editar]').click(function (){					
 					modelEditar($(this).data('id'), "{{ route('servicosAjax.index') }}",
-						function(data){							
+						function(){							
 							comboboxFunction();						
 						} 	
 					);                 
@@ -97,8 +97,7 @@
 				_create: function() {
 					this.wrapper = $( "<span>" )
 					.addClass( "custom-combobox" )
-					.insertAfter( this.element );
-			
+					.insertAfter( this.element );			
 					this.element.hide();
 					this._createAutocomplete();
 					this._createShowAllButton();
@@ -195,8 +194,7 @@
 					// Found a match, nothing to do
 					if ( valid ) {
 						return;
-					}
-	  
+					}	  
 					// Remove invalid value
 					this.input
 					.val( "" )
@@ -213,12 +211,8 @@
 					this.wrapper.remove();
 					this.element.show();
 				}
-		 	});
-	  
-		 	$( "#categoria" ).combobox();
-		 
-		} 
-		   
+		 	});	  
+		 	$( "#categoria" ).combobox();		 
+		} 		   
 	</script>
 @endpush
-
