@@ -47,102 +47,6 @@
 	
     <script>
     	
-		window.userShow = function(id, url , funcSucesso = function() {} ) {			
-					alertProcessando();
-					var token = document.head.querySelector('meta[name="csrf-token"]').content;
-					$.ajax({
-						url: url + "/" + id,
-						type: 'get',
-						data: { _token: token },
-						success: function(retorno) {
-							alertProcessandoHide();
-							if (retorno.erro) {
-								toastErro(retorno.msg);
-							} else {
-								//toastSucesso(retorno.msg);
-								funcSucesso(retorno.data);	
-							}
-						},
-						error: function(erro) {
-							alertProcessandoHide();
-							toastErro("Ocorreu um erro");
-							console.log(erro);
-						}
-					});				
-		}
-
-
-
-		window.userEditar = function(id, url , funcSucesso = function() {} ) {			
-			alertProcessando();
-			var token = document.head.querySelector('meta[name="csrf-token"]').content;
-			$.ajax({
-				url: url + "/" + id + "/edit",
-				type: 'get',
-				data: { _token: token },
-				success: function(retorno) {
-					alertProcessandoHide();	
-					
-					
-					funcSucesso(retorno.data);	
-					
-				},
-				error: function(erro) {
-					alertProcessandoHide();
-					toastErro("Ocorreu um erro");
-					console.log(erro);
-				}
-			});
-			
-		}
-
-
-
-
-
-		window.userUpdateAjax = function(id, url , funcSucesso = function() {} ) {			
-				alertProcessando();
-				//var token = document.head.querySelector('meta[name="csrf-token"]').content;
-				
-				var dados = $('#form-operadora').serialize();
-				
-				//alert(dados);
-
-				$.ajax({
-					url: url + "/" + id ,
-					type: 'post',
-					data: dados ,
-					success: function(retorno) {
-						alertProcessandoHide();	
-						
-						if (retorno.erro) {
-							
-							document.getElementById("div-box").innerHTML = retorno.data ;
-							for (var i in retorno.msg) {
-								toastErro(retorno.msg[i]);								
-							}
-
-						
-
-						} else {
-							toastSucesso(retorno.msg);
-							funcSucesso(retorno.data);	
-						}
-							
-						
-					},
-					error: function(erro) {
-						alertProcessandoHide();
-						toastErro("Ocorreu um erro");
-						console.log(erro);
-					}
-				});		
-
-
-
-		}
-
-
 
 		window.userVoltar = function( ) {				
 			var htmltest = '<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">';				
@@ -152,6 +56,11 @@
 			document.getElementById("div-small-content-header").innerHTML = ""  ;				
 			operadoraFunction();
 		}
+
+
+
+
+
 
 		window.userExcluir = function(id ) {
 							
@@ -166,11 +75,9 @@
 
 
 		window.userUpdate = function(id ) {	
-			//userUpdateAjax
-			
+			//userUpdateAjax			
 			userUpdateAjax( id , "{{ route('operadorasAjax.index') }}", 
-                function(data){
-					
+                function(data){					
                     //document.getElementById("div-box").innerHTML = data ;
 					//document.getElementById("div-titulo-pagina").innerHTML = 'teste'  ;
 					//userVoltar();
@@ -220,14 +127,11 @@
 					);
 				});
 
-
-				$('[btn-show]').click(function (){					
-					userShow($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+/*
+				$('[btn-show-temp]').click(function (){					
+					userShowTemp($(this).data('id'), "{{ route('operadorasAjax.index') }}",
 						function(data){
-
-
-							var htmltest = '<?php echo $showHead; ?>' ;
-							
+							var htmltest = '<?php echo $showHead; ?>' ;							
 							htmltest = htmltest + '<div class="col-12 col-sm-4 dado"><h4 style="text-align:left;">' + data['porcentagem_credito'] + '% para Credito </h4></div>';
 							htmltest = htmltest + '<div class="col-12 col-sm-4 dado"><h4 style="text-align:left;">' + data['porcentagem_credito_parcelado'] + '% para Credito Parcelado </h4></div>';
 							htmltest = htmltest + '<div class="col-12 col-sm-4 dado"><h4 style="text-align:left;">' + data['porcentagem_debito'] + '% para Debito </h4></div>';
@@ -237,7 +141,6 @@
 							htmltest =  htmltest +  '<?php echo $showFooter; ?>' ;
 							htmltest =  htmltest + '<button data-id="';
 							htmltest =  htmltest + data['id'] + '" type="button" class="btn btn-danger" remover-apos-excluir onclick="userExcluir(this.dataset.id)">	<i class="fa fa-times"></i> Excluir	</button> </div>';
-
 							
 							document.getElementById("div-box").innerHTML = htmltest ;
 							document.getElementById("div-titulo-pagina").innerHTML = data['nome'] ;
@@ -246,11 +149,21 @@
 					);                 
 				});
 
+*/
+				$('[btn-show]').click(function (){					
+					modelShow($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+						function(data){							
+							document.getElementById("div-box").innerHTML = data ;
+							document.getElementById("div-titulo-pagina").innerHTML = 'Visualizar' ;							
+						}
+					);                 
+				});
+
+
 
 				$('[btn-editar]').click(function (){					
-					userEditar($(this).data('id'), "{{ route('operadorasAjax.index') }}",
-						function(data){
-							
+					modelEditar($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+						function(data){							
 							document.getElementById("div-box").innerHTML = data ;
 							document.getElementById("div-titulo-pagina").innerHTML = 'Editar'  ;
 							

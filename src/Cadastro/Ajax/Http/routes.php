@@ -26,11 +26,11 @@ use Illuminate\Support\Facades\Route;
 
 
         // PRODUTOS
-        Route::get('produtosAjax/apagados/{id}', 'ProdutoController@showApagado')->name('produtosAjax.showapagado');        
-        Route::get('produtosAjax/apagados', 'ProdutoController@indexApagados')->name('produtosAjax.apagados');
-        Route::delete('produtosAjax/apagados/{id}', 'ProdutoController@destroySoft')->name('produtosAjax.destroySoft');
-        Route::get('produtosAjax/restore/{id}', 'ProdutoController@restore')->name('produtosAjax.restore');
-        Route::post('produtosAjax/getDatatable/apagados', 'ProdutoController@getDatatableApagados')->name('produtosAjax.getDatatable.apagados');        
+        //Route::get('produtosAjax/apagados/{id}', 'ProdutoController@showApagado')->name('produtosAjax.showapagado');        
+        //Route::get('produtosAjax/apagados', 'ProdutoController@indexApagados')->name('produtosAjax.apagados');
+        //Route::delete('produtosAjax/apagados/{id}', 'ProdutoController@destroySoft')->name('produtosAjax.destroySoft');
+        //Route::get('produtosAjax/restore/{id}', 'ProdutoController@restore')->name('produtosAjax.restore');
+        //Route::post('produtosAjax/getDatatable/apagados', 'ProdutoController@getDatatableApagados')->name('produtosAjax.getDatatable.apagados');        
         Route::post('produtosAjax/getDatatable', 'ProdutoController@getDatatable')->name('produtosAjax.getDatatable');        
         Route::resource('produtosAjax', 'ProdutoController'); 
   
