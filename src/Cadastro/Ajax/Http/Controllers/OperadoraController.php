@@ -2,19 +2,15 @@
 
 namespace Manzoli2122\Salao\Cadastro\Ajax\Http\Controllers;
 
-use Manzoli2122\Salao\Cadastro\Models\Operadora;
-use Manzoli2122\Salao\Cadastro\Mail\OperadoraMail;
-//use Manzoli2122\Salao\Cadastro\Http\Controllers\Padroes\SoftDeleteController ;
-use Manzoli2122\Pacotes\Http\Controller\DataTable\Json\SoftDeleteJsonController ;
+use Manzoli2122\Salao\Cadastro\Ajax\Models\Operadora;
+use Manzoli2122\Pacotes\Http\Controller\DataTable\Json\DataTableJsonController ;
 
-class OperadoraController extends SoftDeleteJsonController
+class OperadoraController extends DataTableJsonController
 {
   
     protected $model;
-    protected $logCannel;
     protected $name = "Operadora";
     protected $view = "cadastroAjax::operadoras";
-    protected $view_apagados = "cadastroAjax::operadoras.apagados";
     protected $route = "operadorasAjax";
 
 

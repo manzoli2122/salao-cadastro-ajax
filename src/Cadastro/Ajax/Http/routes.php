@@ -4,13 +4,15 @@ use Illuminate\Support\Facades\Route;
     Route::group(['prefix' => 'cadastroAjax', 'middleware' => 'auth' ], function(){
 
         // OPERADORAS
-        Route::get('operadorasAjax/apagados/{id}', 'OperadoraController@showApagado')->name('operadorasAjax.showapagado');     
-        Route::get('operadorasAjax/apagados', 'OperadoraController@indexApagados')->name('operadorasAjax.apagados');        
-        Route::delete('operadorasAjax/apagados/{id}', 'OperadoraController@destroySoft')->name('operadorasAjax.destroySoft');
-        Route::get('operadorasAjax/restore/{id}', 'OperadoraController@restore')->name('operadorasAjax.restore');        
-        Route::post('operadorasAjax/getDatatable/apagados', 'OperadoraController@getDatatableApagados')->name('operadorasAjax.getDatatable.apagados');        
         Route::post('operadorasAjax/getDatatable', 'OperadoraController@getDatatable')->name('operadorasAjax.getDatatable');        
         Route::resource('operadorasAjax', 'OperadoraController'); 
+
+        //Route::get('operadorasAjax/apagados/{id}', 'OperadoraController@showApagado')->name('operadorasAjax.showapagado');     
+        //Route::get('operadorasAjax/apagados', 'OperadoraController@indexApagados')->name('operadorasAjax.apagados');        
+        //Route::delete('operadorasAjax/apagados/{id}', 'OperadoraController@destroySoft')->name('operadorasAjax.destroySoft');
+        //Route::get('operadorasAjax/restore/{id}', 'OperadoraController@restore')->name('operadorasAjax.restore');        
+        //Route::post('operadorasAjax/getDatatable/apagados', 'OperadoraController@getDatatableApagados')->name('operadorasAjax.getDatatable.apagados');        
+        
 
 
 
