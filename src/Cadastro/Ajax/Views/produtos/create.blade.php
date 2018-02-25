@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-success" id="div-box">
-                    <form method="post" action="{{route('produtos.store')}}" id="form-model">            
+                    <form method="post" action="{{route('produtosAjax.store')}}" id="form-model">            
                         {{csrf_field()}}
-                        @include('cadastroAjax::produtos._form', ['model' => new Manzoli2122\Salao\Cadastro\Models\Produto() ])
+                        @include('cadastroAjax::produtos._form', ['model' => new Manzoli2122\Salao\Cadastro\Ajax\Models\Produto() ])
                     </form>
 
                     <div class="box-footer align-right">

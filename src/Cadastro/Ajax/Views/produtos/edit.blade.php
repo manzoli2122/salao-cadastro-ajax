@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-success" id="div-box">
-                    <form method="post" action="{{route('produtos.update', $model->id)}}" id="form-model">            
+                    <form method="post" action="{{route('produtosAjax.update', $model->id)}}" id="form-model">            
                         {{csrf_field()}}
                         <input name="_method" type="hidden" value="PATCH">
                         @include('cadastroAjax::produtos._form', ['model' => $model])                        

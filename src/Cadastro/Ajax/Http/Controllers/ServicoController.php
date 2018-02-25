@@ -2,23 +2,23 @@
 
 namespace Manzoli2122\Salao\Cadastro\Ajax\Http\Controllers;
 
-use Manzoli2122\Salao\Cadastro\Models\Servico;
-use Manzoli2122\Salao\Cadastro\Http\Controllers\Padroes\StandardAtivoController ;
-use DataTables;
+use Manzoli2122\Salao\Cadastro\Ajax\Models\Servico;
+use Manzoli2122\Pacotes\Http\Controller\DataTable\Json\DataTableJsonController ;
 
-class ServicoController extends StandardAtivoController
+class ServicoController extends DataTableJsonController
 {    
 
     protected $model;
     protected $name = "Servico";
     protected $view = "cadastroAjax::servicos";
-    protected $view_apagados = "cadastroAjax::servicos.apagados";
     protected $route = "servicosAjax";
-    protected $logCannel;
-
+    
     public function __construct(Servico $servico){
         $this->model = $servico;
         $this->middleware('auth');
+       
+       
+       /*
         $this->logCannel = 'cadastro';
         $this->middleware('permissao:servicos')->only([ 'index' , 'show'  ]) ;        
         $this->middleware('permissao:servicos-cadastrar')->only([ 'create' , 'store']);
@@ -27,6 +27,8 @@ class ServicoController extends StandardAtivoController
         $this->middleware('permissao:servicos-restore')->only([ 'restore' ]);
         $this->middleware('permissao:servicos-admin-permanete-delete')->only([ 'destroy' ]);
         $this->middleware('permissao:servicos-apagados')->only([ 'indexApagados' , 'showApagado' ]) ;
+        */
+
     }
 
 
