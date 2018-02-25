@@ -13,6 +13,7 @@ class Produto extends Model implements DataTableJson
 {
     use SoftDeletes;
 
+
     public function newInstance($attributes = [], $exists = false){
         $model = parent::newInstance($attributes, $exists);    
         $model->setTable($this->getTable());    
@@ -20,73 +21,45 @@ class Produto extends Model implements DataTableJson
     }
 
 
-
-
     public function getTable(){
         return  Config::get('cadastro.produtos_table' , 'produtos');
     }
-
-
      
-    protected $fillable = [
-            'nome', 'valor', 'descricao', 'ativo' , 'observacoes' , 'desconto_maximo' , 'desconto_promocional' , 
-    ];
+    protected $fillable = ['nome', 'valor', 'descricao', 'ativo' , 'observacoes' , 'desconto_maximo' , 'desconto_promocional' , ];
     
-
 
     public function scopeAtivo($query){
         return $query->where('ativo', 1);
     }
 
 
-
-    
     public function scopeInativo($query){
         return $query->where('ativo', 0);
     }
 
 
-    
-
-
-    public function index($totalPage){
-        return $this->ativo()->orderBy('nome', 'asc')->paginate($totalPage);        
-    }
-
-
-
-
     public function rules($id = ''){
         return [
-            'nome' => 'required|min:2|max:100',                                
+            'nome' => 'required|between:2,100',    
+            'valor' => 'required|numeric|min:0',
+            'desconto_maximo' => 'required|numeric|min:0|max:100',
+            'observacoes' => 'min:2|max:1000',                            
         ];
     }
-
-
-
 
 
     public function findModelJson($id){
          return $this->find($id);
     }
 
-
-
-
     
-    public function getDatatable()
-    {
+    public function getDatatable(){
         return $this->select(['id', 'nome',  DB::raw(  " concat('R$', ROUND  (valor , 2 ) ) as valor" )  ,
         'observacoes' , DB::raw(  " concat( desconto_maximo , '%' ) as desconto_maximo" )  ]);        
     }
     
 
-
-
-
-
-    public function getDatatableApagados()
-    {
+    public function getDatatableApagados(){
         return $this->inativo()->select(['id', 'nome',  DB::raw(  " concat('R$', ROUND  (valor , 2 ) ) as valor" )  ,
         'observacoes' , DB::raw(  " concat( desconto_maximo , '%' ) as desconto_maximo" )   ]);        
     }

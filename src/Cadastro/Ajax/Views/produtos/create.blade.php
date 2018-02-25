@@ -1,21 +1,28 @@
-@extends( Config::get('app.templateMaster' , 'templates.templateMaster')  )
+    <section class="content-header">
+        <h1>
+            <span id="div-titulo-pagina">
+                Adicionar Produto
+            </span>
+            <small id="div-small-content-header" ></small>
+            <small style="float: right;">    </small>
+        </h1>
+    </section>            
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-success" id="div-box">
+                    <form method="post" action="{{route('produtos.store')}}" id="form-model">            
+                        {{csrf_field()}}
+                        @include('cadastroAjax::produtos._form', ['model' => new Manzoli2122\Salao\Cadastro\Models\Produto() ])
+                    </form>
 
-@section( Config::get('app.templateMasterContentTitulo' , 'titulo-page')  )			
-	Adicionar Produto
-@endsection
-    
-@section( Config::get('app.templateMasterContent' , 'content')  )
+                    <div class="box-footer align-right">
+                        <button type="button" class="btn btn-default"  onclick="modelVoltarIndex()" > <i class="fa fa-reply"></i> Voltar </button>
+                        <button class="btn btn-success" onclick="modelStore( '{{ route('produtosAjax.store') }}')" ><i class="fa fa-check"></i> Salvar</button> 
+                    </div>
 
-<div class="col-md-12">
-    <div class="box box-success">
-        <form method="post" action="{{route('produtos.store')}}">            
-            {{csrf_field()}}
-            @include('cadastro::produtos._form', ['model' => new Manzoli2122\Salao\Cadastro\Models\Produto()])
-            <div class="box-footer align-right">
-                <a class="btn btn-default" href="{{ URL::previous() }}"><i class="fa fa-reply"></i> Cancelar</a>
-                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Salvar</button>
+                </div>
             </div>
-        </form>
-    </div>
-</div>
-@endsection
+        </div>
+    </section>
+        

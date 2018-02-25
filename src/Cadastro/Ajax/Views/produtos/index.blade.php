@@ -1,6 +1,5 @@
 @extends( Config::get('app.templateMasterJson' , 'templates.templateMasterJson')  )
 
-
 @section( Config::get('app.templateMasterContent' , 'content')  )
 <section class="content-header">
 	<h1>
@@ -9,10 +8,10 @@
 		</span>
 		<small id="div-small-content-header" ></small>
 		<small style="float: right;">
-			@permissao('produtos-cadastrar')			
-				<a href="{{ route('produtosAjax.create')}}" class="btn btn-success btn-sm" title="Adicionar um novo Produto">
-					<i class="fa fa-plus"></i> Cadastrar Produto
-				</a>	
+			@permissao('produtos-cadastrar')
+				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('produtosAjax.create') }}')" title="Adicionar um novo Produto">
+					<i class="fa fa-plus"></i> Cadastrar Produto 
+				</button> 				
 			@endpermissao	
 		</small>
 	</h1>
@@ -29,17 +28,12 @@
 @endsection
 
 
-
-
-
-
 @push(Config::get('app.templateMasterScript' , 'script') )
 	<script src="{{ mix('js/datatables-padrao.js') }}" type="text/javascript"></script>
 	
 	<script>
 
-		var pagianIndex = document.getElementById("div-pagina").innerHTML;
-		
+		var pagianIndex = document.getElementById("div-pagina").innerHTML;		
 		function modelIndexDataTableFunction() {
 			var dataTable = datatablePadrao('#datatable', {
 				order: [[ 1, "asc" ]],
@@ -80,22 +74,6 @@
 
 			});
 		}
-
-
-
-
-
-		window.modelUpdate = function(id ) {	
-			var dados = $('#form-produto').serialize();					
-			modelUpdateAjax( id , "{{ route('produtosAjax.index') }}", dados ,  
-                function(data){			                   
-                }
-            );
-		}
-		
-
-
-
 
 		$(document).ready(function() {
 			modelIndexDataTableFunction();
