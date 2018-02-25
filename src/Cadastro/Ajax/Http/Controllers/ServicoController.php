@@ -17,12 +17,16 @@ class ServicoController extends DataTableJsonController
         $this->model = $servico;
         $this->middleware('auth');
        
-       
-       /*
-        $this->logCannel = 'cadastro';
         $this->middleware('permissao:servicos')->only([ 'index' , 'show'  ]) ;        
         $this->middleware('permissao:servicos-cadastrar')->only([ 'create' , 'store']);
         $this->middleware('permissao:servicos-editar')->only([ 'edit' , 'update']);
+        $this->middleware('permissao:servicos-soft-delete')->only([ 'destroy' ]);
+
+        $this->middleware('perfil:Admin')->only([ 'indexApagados' , 'showApagado' ]) ;
+
+       /*
+        $this->logCannel = 'cadastro';
+        
         $this->middleware('permissao:servicos-soft-delete')->only([ 'destroySoft' ]);
         $this->middleware('permissao:servicos-restore')->only([ 'restore' ]);
         $this->middleware('permissao:servicos-admin-permanete-delete')->only([ 'destroy' ]);
