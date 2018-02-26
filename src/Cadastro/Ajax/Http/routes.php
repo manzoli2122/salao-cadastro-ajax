@@ -40,4 +40,20 @@ use Illuminate\Support\Facades\Route;
         //Route::post('produtosAjax/getDatatable/apagados', 'ProdutoController@getDatatableApagados')->name('produtosAjax.getDatatable.apagados');        
         
 
+
+
+
+
+
+
+
+
+
+        // OPERADORAS
+        Route::post('apagados/operadorasAjax/getDatatable', 'OperadoraSoftDeleteController@getDatatable')->name('apagadosOperadorasAjax.getDatatable');        
+        Route::resource('apagadosOperadorasAjax', 'OperadoraSoftDeleteController', ['only' => [
+            'index', 'show' , 'destroy'
+        ]]); 
+
+
     });

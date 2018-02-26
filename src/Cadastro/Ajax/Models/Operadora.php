@@ -50,6 +50,11 @@ class Operadora extends Model implements DataTableJson
         return $this->find($id);
     }
 
+    public function findModelSoftDeleteJson($id){
+        return $this->onlyTrashed()->find($id);
+    }
+
+
 
     public function getDatatable(){
         return $this->select(['id', 'nome', 
