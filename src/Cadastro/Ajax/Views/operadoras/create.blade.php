@@ -13,7 +13,7 @@
                 <div class="box box-success" id="div-box">
                     <form method="post" action="{{route('operadorasAjax.store')}}" id="form-model">            
                         {{csrf_field()}}
-                        @include('cadastroAjax::operadoras._form', ['model' => new Manzoli2122\Salao\Cadastro\Ajax\Models\Operadora() ])
+                        @include('cadastroAjax::operadoras._form')
                     </form>
     
                     <div class="box-footer align-right">

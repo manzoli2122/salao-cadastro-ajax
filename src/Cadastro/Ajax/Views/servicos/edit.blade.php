@@ -14,7 +14,7 @@
                     <form method="post" action="{{route('servicosAjax.update', $model->id)}}" id="form-model">            
                         {{csrf_field()}}
                         <input name="_method" type="hidden" value="PATCH">
-                        @include('cadastroAjax::servicos._form', ['model' => $model])                        
+                        @include('cadastroAjax::servicos._form')                        
                     </form>
                     <div class="box-footer align-right">  
                         <button type="button" class="btn btn-default"  onclick="modelVoltarIndex()" > <i class="fa fa-reply"></i> Voltar </button> 

@@ -13,7 +13,7 @@
             <div class="box box-success" id="div-box">
                 <form method="post" action="{{route('servicosAjax.store')}}" id="form-model">            
                     {{csrf_field()}}
-                    @include('cadastroAjax::servicos._form', ['model' => new Manzoli2122\Salao\Cadastro\Ajax\Models\Servico() ])
+                    @include('cadastroAjax::servicos._form')
                 </form>
 
                 <div class="box-footer align-right">
