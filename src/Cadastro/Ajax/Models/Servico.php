@@ -56,7 +56,12 @@ class Servico extends Model  implements DataTableJson
 
     public function findModelJson($id){
         return $this->find($id);
-   }
+    }
+
+   
+    public function findModelSoftDeleteJson($id){
+        return $this->onlyTrashed()->find($id);
+    }
 
 
     public function getDatatable(){

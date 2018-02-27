@@ -38,7 +38,7 @@
 				</div>
 				<div class="box-footer align-right">
 					@permissao('operadoras-soft-delete')
-						<button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('operadorasAjax.index') }}')" remover-apos-excluir>
+						<button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('apagadosOperadorasAjax.index') }}')" remover-apos-excluir>
 							<i class="fa fa-times"></i> Excluir
 						</button>
 					@endpermissao

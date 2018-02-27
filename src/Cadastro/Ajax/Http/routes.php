@@ -50,7 +50,8 @@ use Illuminate\Support\Facades\Route;
 
 
         // OPERADORAS
-        Route::post('apagados/operadorasAjax/getDatatable', 'OperadoraSoftDeleteController@getDatatable')->name('apagadosOperadorasAjax.getDatatable');        
+        Route::post('apagadosOperadorasAjax/restore/{id}', 'OperadoraSoftDeleteController@restore')->name('apagadosOperadorasAjax.restore');        
+        Route::post('apagadosOperadorasAjax/getDatatable', 'OperadoraSoftDeleteController@getDatatable')->name('apagadosOperadorasAjax.getDatatable');        
         Route::resource('apagadosOperadorasAjax', 'OperadoraSoftDeleteController', ['only' => [
             'index', 'show' , 'destroy'
         ]]); 

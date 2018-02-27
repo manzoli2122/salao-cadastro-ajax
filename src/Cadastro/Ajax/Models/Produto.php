@@ -53,6 +53,11 @@ class Produto extends Model implements DataTableJson
     }
 
     
+    public function findModelSoftDeleteJson($id){
+        return $this->onlyTrashed()->find($id);
+    }
+
+    
     public function getDatatable(){
         return $this->select(['id', 'nome',  DB::raw(  " concat('R$', ROUND  (valor , 2 ) ) as valor" )  ,
         'observacoes' , DB::raw(  " concat( desconto_maximo , '%' ) as desconto_maximo" )  ]);        

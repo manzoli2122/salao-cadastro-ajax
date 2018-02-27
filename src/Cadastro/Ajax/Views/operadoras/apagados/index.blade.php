@@ -65,9 +65,9 @@
 				});
 
 				$('[btn-restaurar]').click(function (){					
-					modelEditar($(this).data('id'), "{{ route('apagadosOperadorasAjax.index') }}",
+					modelRestaurar($(this).data('id'), "{{ route('apagadosOperadorasAjax.index') }}",
 						function(){							
-							comboboxFunction();						
+							dataTable.row( $(this).parents('tr') ).remove().draw('page');					
 						} 	
 					);                 
 				});

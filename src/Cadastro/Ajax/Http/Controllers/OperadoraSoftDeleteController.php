@@ -16,6 +16,8 @@ class OperadoraSoftDeleteController extends SoftDeleteJsonController
 
 
     public function __construct(Operadora $operadora){
+        
+        
         $this->model = $operadora;
         $this->middleware('auth');
 
