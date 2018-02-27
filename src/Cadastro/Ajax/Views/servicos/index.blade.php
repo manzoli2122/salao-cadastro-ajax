@@ -3,10 +3,7 @@
 @section( Config::get('app.templateMasterContent' , 'content')  )
 <section class="content-header">
 	<h1>
-		<span id="div-titulo-pagina">
-			Listagem dos Serviços	
-		</span>
-		<small id="div-small-content-header" ></small>
+		<span id="div-titulo-pagina">Listagem dos Serviços	</span>
 		<small style="float: right;">
 			@permissao('servicos-cadastrar')
 				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('servicosAjax.create') }}' , function(){comboboxFunction();}  )" title="Adicionar um novo Serviço">
@@ -20,7 +17,22 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box box-success" id="div-box"> 
-				<?php echo $dataTable; ?>      
+				<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">
+					<table class="table table-bordered table-striped table-hover" id="datatable">
+						<thead>
+							<tr>
+								<th  style="max-width:20px">ID</th>
+								<th pesquisavel>Nome</th>
+								<th>Valor</th>						
+								<th>Duração</th>										
+								<th>Porc. Func.</th>
+								<th>Categoria</th>
+								<th style="max-width:70px">Desconto Máx.</th>												
+								<th class="align-center" style="width:120px">Ações</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

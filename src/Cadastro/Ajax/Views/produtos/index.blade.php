@@ -3,10 +3,7 @@
 @section( Config::get('app.templateMasterContent' , 'content')  )
 <section class="content-header">
 	<h1>
-		<span id="div-titulo-pagina">
-			Listagem dos Produtos
-		</span>
-		<small id="div-small-content-header" ></small>
+		<span id="div-titulo-pagina">Listagem dos Produtos	</span>
 		<small style="float: right;">
 			@permissao('produtos-cadastrar')
 				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('produtosAjax.create') }}')" title="Adicionar um novo Produto">
@@ -20,7 +17,21 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box box-success" id="div-box"> 
-				<?php echo $dataTable; ?>      
+				<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">
+					<table class="table table-bordered table-striped table-hover" id="datatable">
+						<thead>	
+							<tr>
+								<th style="max-width:20px">ID</th>
+								<th pesquisavel>Nome</th>
+								<th>Valor</th>			
+								<th>Observações</th>
+								<th>Desconto Máximo</th>		
+								<th class="align-center" style="width:140px">Ações</th>
+							</tr>
+						</thead>	
+					</table>
+				</div>
+					  
 			</div>
 		</div>
 	</div>
