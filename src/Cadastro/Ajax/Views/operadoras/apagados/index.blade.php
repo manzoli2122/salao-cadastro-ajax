@@ -1,5 +1,19 @@
 @extends( Config::get('app.templateMasterJson' , 'templates.templateMasterJson')  )
 
+
+
+@push('styles') 
+<style>
+	.content-wrapper {		
+		background-color:#ffc9c9;
+	}
+	.box , .box-footer{		
+		background: #fee;
+	}
+</style>
+@endpush
+
+
 @section( Config::get('app.templateMasterContent' , 'content')  )
 <section class="content-header">
 	<h1>
