@@ -1,10 +1,6 @@
 <section class="content-header">
         <h1>
-            <span id="div-titulo-pagina">
-                {{ $model->nome }}
-            </span>
-            <small id="div-small-content-header" ></small>
-            <small style="float: right;">    </small>
+            <span id="div-titulo-pagina">{{ $model->nome }}</span>
         </h1>
     </section>
                 
