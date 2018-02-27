@@ -65,7 +65,7 @@ class Produto extends Model implements DataTableJson
     
 
     public function getDatatableApagados(){
-        return $this->inativo()->select(['id', 'nome',  DB::raw(  " concat('R$', ROUND  (valor , 2 ) ) as valor" )  ,
+        return $this->onlyTrashed()->select(['id', 'nome',  DB::raw(  " concat('R$', ROUND  (valor , 2 ) ) as valor" )  ,
         'observacoes' , DB::raw(  " concat( desconto_maximo , '%' ) as desconto_maximo" )   ]);        
     }
 
