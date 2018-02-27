@@ -1,10 +1,6 @@
 <section class="content-header">
     <h1>
-        <span id="div-titulo-pagina">
-            {{ $model->nome }}
-        </span>
-        <small id="div-small-content-header" ></small>
-        <small style="float: right;">    </small>
+        <span id="div-titulo-pagina">{{ $model->nome }}</span>
     </h1>
 </section>
             
@@ -46,12 +42,12 @@
                 </div>
                 <div class="box-footer align-right">
                     @permissao('servicos-soft-delete')
-                        <button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('servicosAjax.index') }}')" remover-apos-excluir>
+                        <button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('servicos.ajax.index') }}')" remover-apos-excluir>
                             <i class="fa fa-times"></i> Excluir
                         </button>
                     @endpermissao
                     @permissao('servicos-editar')
-                        <button type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('servicosAjax.index') }}' )" remover-apos-excluir  title="Editar">
+                        <button type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('servicos.ajax.index') }}' )" remover-apos-excluir  title="Editar">
                             <i class="fa fa-pencil"></i> Editar
                         </button>                        
                     @endpermissao

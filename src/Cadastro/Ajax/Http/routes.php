@@ -3,65 +3,59 @@ use Illuminate\Support\Facades\Route;
 
     Route::group(['prefix' => 'cadastro/ajax', 'middleware' => 'auth' ], function(){
 
+
+
         // OPERADORAS
-        Route::post('operadoras/getDatatable', 'OperadoraController@getDatatable')->name('operadorasAjax.getDatatable');        
+        Route::post('operadoras/getDatatable', 'OperadoraController@getDatatable')->name('operadoras.ajax.getDatatable');        
         Route::resource('operadoras', 'OperadoraController' , ['names' => [
-            'create' => 'operadorasAjax.create' ,
-            'index' => 'operadorasAjax.index' ,
-            'edit' => 'operadorasAjax.edit' ,
-            'update' => 'operadorasAjax.update' ,
-            'store' => 'operadorasAjax.store' ,
-            'show' => 'operadorasAjax.show' ,
-            'destroy' => 'operadorasAjax.destroy' ,
+            'create' => 'operadoras.ajax.create' ,
+            'index' => 'operadoras.ajax.index' ,
+            'edit' => 'operadoras.ajax.edit' ,
+            'update' => 'operadoras.ajax.update' ,
+            'store' => 'operadoras.ajax.store' ,
+            'show' => 'operadoras.ajax.show' ,
+            'destroy' => 'operadoras.ajax.destroy' ,
         ]]); 
 
-        //Route::get('operadorasAjax/apagados/{id}', 'OperadoraController@showApagado')->name('operadorasAjax.showapagado');     
-        //Route::get('operadorasAjax/apagados', 'OperadoraController@indexApagados')->name('operadorasAjax.apagados');        
-        //Route::delete('operadorasAjax/apagados/{id}', 'OperadoraController@destroySoft')->name('operadorasAjax.destroySoft');
-        //Route::get('operadorasAjax/restore/{id}', 'OperadoraController@restore')->name('operadorasAjax.restore');        
-        //Route::post('operadorasAjax/getDatatable/apagados', 'OperadoraController@getDatatableApagados')->name('operadorasAjax.getDatatable.apagados');        
+
+
+
+
+        // PRODUTOS
+        Route::post('produtos/getDatatable', 'ProdutoController@getDatatable')->name('produtos.ajax.getDatatable');        
+        Route::resource('produtos', 'ProdutoController', ['names' => [
+            'create' => 'produtos.ajax.create' ,
+            'index' => 'produtos.ajax.index' ,
+            'edit' => 'produtos.ajax.edit' ,
+            'update' => 'produtos.ajax.update' ,
+            'store' => 'produtos.ajax.store' ,
+            'show' => 'produtos.ajax.show' ,
+            'destroy' => 'produtos.ajax.destroy' ,
+        ]]); 
         
+
+
 
 
 
         // SERVIÇOS
-        Route::post('servicos/getDatatable', 'ServicoController@getDatatable')->name('servicosAjax.getDatatable');        
+        Route::post('servicos/getDatatable', 'ServicoController@getDatatable')->name('servicos.ajax.getDatatable');        
         Route::resource('servicos', 'ServicoController' , ['names' => [
-            'create' => 'servicosAjax.create' ,
-            'index' => 'servicosAjax.index' ,
-            'edit' => 'servicosAjax.edit' ,
-            'update' => 'servicosAjax.update' ,
-            'store' => 'servicosAjax.store' ,
-            'show' => 'servicosAjax.show' ,
-            'destroy' => 'servicosAjax.destroy' ,
+            'create' => 'servicos.ajax.create' ,
+            'index' => 'servicos.ajax.index' ,
+            'edit' => 'servicos.ajax.edit' ,
+            'update' => 'servicos.ajax.update' ,
+            'store' => 'servicos.ajax.store' ,
+            'show' => 'servicos.ajax.show' ,
+            'destroy' => 'servicos.ajax.destroy' ,
         ]]);
 
-        //Route::get('servicosAjax/apagados/{id}', 'ServicoController@showApagado')->name('servicosAjax.showapagado');        
-        //Route::get('servicosAjax/apagados', 'ServicoController@indexApagados')->name('servicosAjax.apagados');
-        //Route::delete('servicosAjax/apagados/{id}', 'ServicoController@destroySoft')->name('servicosAjax.destroySoft');
-        //Route::get('servicosAjax/restore/{id}', 'ServicoController@restore')->name('servicosAjax.restore');
-        //Route::post('servicosAjax/getDatatable/apagados', 'ServicoController@getDatatableApagados')->name('servicosAjax.getDatatable.apagados');        
-        
+
 
 
         
-        // PRODUTOS
-        Route::post('produtos/getDatatable', 'ProdutoController@getDatatable')->name('produtosAjax.getDatatable');        
-        Route::resource('produtos', 'ProdutoController', ['names' => [
-            'create' => 'produtosAjax.create' ,
-            'index' => 'produtosAjax.index' ,
-            'edit' => 'produtosAjax.edit' ,
-            'update' => 'produtosAjax.update' ,
-            'store' => 'produtosAjax.store' ,
-            'show' => 'produtosAjax.show' ,
-            'destroy' => 'produtosAjax.destroy' ,
-        ]]); 
+        
   
-        //Route::get('produtosAjax/apagados/{id}', 'ProdutoController@showApagado')->name('produtosAjax.showapagado');        
-        //Route::get('produtosAjax/apagados', 'ProdutoController@indexApagados')->name('produtosAjax.apagados');
-        //Route::delete('produtosAjax/apagados/{id}', 'ProdutoController@destroySoft')->name('produtosAjax.destroySoft');
-        //Route::get('produtosAjax/restore/{id}', 'ProdutoController@restore')->name('produtosAjax.restore');
-        //Route::post('produtosAjax/getDatatable/apagados', 'ProdutoController@getDatatableApagados')->name('produtosAjax.getDatatable.apagados');        
         
 
 
@@ -70,9 +64,6 @@ use Illuminate\Support\Facades\Route;
         //----------------------------------------------------------------------------------------------------------------------
         //  APAGADOS
         //----------------------------------------------------------------------------------------------------------------------
-
-
-
 
         Route::group(['prefix' => 'apagados', 'middleware' => 'auth' ], function(){
             

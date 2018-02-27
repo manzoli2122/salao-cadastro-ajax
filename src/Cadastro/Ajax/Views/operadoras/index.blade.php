@@ -6,7 +6,7 @@
 		<span id="div-titulo-pagina">Listagem dos Operadoras </span>		
 		<small style="float: right;">
 			@permissao('operadoras-cadastrar')
-				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('operadorasAjax.create') }}'   )" title="Adicionar uma nova Operadora">
+				<button class="btn btn-success btn-sm" onclick="modelCreate( '{{ route('operadoras.ajax.create') }}'   )" title="Adicionar uma nova Operadora">
 					<i class="fa fa-plus"></i> Cadastrar Operadora 
 				</button>	
 			@endpermissao		
@@ -51,7 +51,7 @@
 			var dataTable = datatablePadrao('#datatable', {
 				order: [[ 1, "asc" ]],
 				ajax: { 
-					url:'{{ route('operadorasAjax.getDatatable') }}'
+					url:'{{ route('operadoras.ajax.getDatatable') }}'
 				},
 				columns: [
 					{ data: 'id', name: 'id' },
@@ -66,7 +66,7 @@
 	
 			dataTable.on('draw', function () {
 				$('[btn-excluir]').click(function (){
-					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'Operadoras' ])", "{{ route('operadorasAjax.index') }}", 
+					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'Operadoras' ])", "{{ route('operadoras.ajax.index') }}", 
 						function(){
 							dataTable.row( $(this).parents('tr') ).remove().draw('page');
 						}
@@ -74,7 +74,7 @@
 				});
 
 				$('[btn-show]').click(function (){					
-					modelShow($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+					modelShow($(this).data('id'), "{{ route('operadoras.ajax.index') }}",
 						function(data){							
 							document.getElementById("div-pagina").innerHTML = data ;						
 						}
@@ -82,7 +82,7 @@
 				});
 
 				$('[btn-editar]').click(function (){					
-					modelEditar($(this).data('id'), "{{ route('operadorasAjax.index') }}",
+					modelEditar($(this).data('id'), "{{ route('operadoras.ajax.index') }}",
 						function(){							
 							comboboxFunction();						
 						} 	

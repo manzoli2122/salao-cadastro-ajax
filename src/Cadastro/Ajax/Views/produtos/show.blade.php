@@ -31,12 +31,12 @@
                 </div>
                 <div class="box-footer align-right">
                     @permissao('produtos-soft-delete')
-                        <button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('produtosAjax.index') }}')" remover-apos-excluir>
+                        <button type="button" class="btn btn-danger"  onclick="modelDelete( {{$model->id}} , '{{ route('produtos.ajax.index') }}')" remover-apos-excluir>
                             <i class="fa fa-times"></i> Excluir
                         </button>
                     @endpermissao
                     @permissao('produtos-editar')
-                        <button type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('produtosAjax.index') }}' )" remover-apos-excluir  title="Editar">
+                        <button type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('produtos.ajax.index') }}' )" remover-apos-excluir  title="Editar">
                             <i class="fa fa-pencil"></i> Editar
                         </button>                        
                     @endpermissao
