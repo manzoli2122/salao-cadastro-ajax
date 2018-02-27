@@ -11,7 +11,7 @@ class OperadoraSoftDeleteController extends SoftDeleteJsonController
     protected $model;
     protected $name = "Operadora";
     protected $view = "cadastroAjax::operadoras.apagados";
-    protected $route = "operadorasAjax";
+    protected $route = "operadoras.ajax.apagados";
 
 
 

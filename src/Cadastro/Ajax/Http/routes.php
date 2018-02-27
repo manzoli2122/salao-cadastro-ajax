@@ -78,15 +78,15 @@ use Illuminate\Support\Facades\Route;
             
             
             // OPERADORAS
-            Route::post('operadoras/restore/{id}', 'OperadoraSoftDeleteController@restore')->name('apagadosOperadorasAjax.restore');        
-            Route::post('operadoras/getDatatable', 'OperadoraSoftDeleteController@getDatatable')->name('apagadosOperadorasAjax.getDatatable');        
+            Route::post('operadoras/restore/{id}', 'OperadoraSoftDeleteController@restore')->name('operadoras.ajax.apagados.restore');        
+            Route::post('operadoras/getDatatable', 'OperadoraSoftDeleteController@getDatatable')->name('operadoras.ajax.apagados.getDatatable');        
             Route::resource('operadoras', 'OperadoraSoftDeleteController', ['only' => [
                     'index', 'show' , 'destroy'
                 ] ,
                 'names' => [                
-                    'index' => 'apagadosOperadorasAjax.index' ,   
-                    'show' => 'apagadosOperadorasAjax.show' ,
-                    'destroy' => 'apagadosOperadorasAjax.destroy' ,
+                    'index' => 'operadoras.ajax.apagados.index' ,   
+                    'show' => 'operadoras.ajax.apagados.show' ,
+                    'destroy' => 'operadoras.ajax.apagados.destroy' ,
                 ]
             ]); 
 
@@ -105,6 +105,22 @@ use Illuminate\Support\Facades\Route;
                     'index' => 'produtos.ajax.apagados.index' ,   
                     'show' => 'produtos.ajax.apagados.show' ,
                     'destroy' => 'produtos.ajax.apagados.destroy' ,
+                ]
+            ]); 
+
+
+
+
+            // SERVIÇOS
+            Route::post('servicos/restore/{id}', 'ServicoSoftDeleteController@restore')->name('servicos.ajax.apagados.restore');        
+            Route::post('servicos/getDatatable', 'ServicoSoftDeleteController@getDatatable')->name('servicos.ajax.apagados.getDatatable');        
+            Route::resource('servicos', 'ServicoSoftDeleteController', ['only' => [
+                    'index', 'show' , 'destroy'
+                ] ,
+                'names' => [                
+                    'index' => 'servicos.ajax.apagados.index' ,   
+                    'show' => 'servicos.ajax.apagados.show' ,
+                    'destroy' => 'servicos.ajax.apagados.destroy' ,
                 ]
             ]); 
 

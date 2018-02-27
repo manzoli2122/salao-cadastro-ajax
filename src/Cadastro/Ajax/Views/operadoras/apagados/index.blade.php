@@ -1,18 +1,11 @@
 @extends( Config::get('app.templateMasterJson' , 'templates.templateMasterJson')  )
 
-
-
 @push('styles') 
-<style>
-	.content-wrapper {		
-		background-color:#ffc9c9;
-	}
-	.box , .box-footer{		
-		background: #fee;
-	}
-</style>
+	<style>
+		.content-wrapper {	background-color:#ffc9c9;	}
+		.box , .box-footer{	background: #fee;	}
+	</style>
 @endpush
-
 
 @section( Config::get('app.templateMasterContent' , 'content')  )
 <section class="content-header">
@@ -28,7 +21,21 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box box-success" id="div-box"> 
-				<?php echo $dataTable; ?>      
+				<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">
+					<table class="table table-bordered table-striped table-hover" id="datatable">
+						<thead>	
+							<tr>
+								<th style="max-width:20px">ID</th>
+								<th pesquisavel>Nome</th>
+								<th>Porc. Credito</th>
+								<th>Porc. Cred. Parc.</th>
+								<th>Porc. Debito</th>
+								<th>Máx. de Parcelas</th>
+								<th class="align-center" style="width:140px">Ações</th>
+							</tr>
+						</thead>
+					</table>
+				</div>     
 			</div>
 		</div>
 	</div>
@@ -48,7 +55,7 @@
 			var dataTable = datatablePadrao('#datatable', {
 				order: [[ 1, "asc" ]],
 				ajax: { 
-					url:'{{ route('apagadosOperadorasAjax.getDatatable') }}'
+					url:'{{ route('operadoras.ajax.apagados.getDatatable') }}'
 				},
 				columns: [
 					{ data: 'id', name: 'id' },
@@ -63,7 +70,7 @@
 	
 			dataTable.on('draw', function () {
 				$('[btn-excluir]').click(function (){
-					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'Operadoras' ])", "{{ route('apagadosOperadorasAjax.index') }}", 
+					excluirRecursoPeloId($(this).data('id'), "@lang('msg.conf_excluir_o', ['1' => 'Operadoras' ])", "{{ route('operadoras.ajax.apagados.index') }}", 
 						function(){
 							dataTable.row( $(this).parents('tr') ).remove().draw('page');
 						}
@@ -71,7 +78,7 @@
 				});
 
 				$('[btn-show]').click(function (){					
-					modelShow($(this).data('id'), "{{ route('apagadosOperadorasAjax.index') }}",
+					modelShow($(this).data('id'), "{{ route('operadoras.ajax.apagados.index') }}",
 						function(data){							
 							document.getElementById("div-pagina").innerHTML = data ;						
 						}
@@ -79,7 +86,7 @@
 				});
 
 				$('[btn-restaurar]').click(function (){					
-					modelRestaurar($(this).data('id'), "{{ route('apagadosOperadorasAjax.index') }}",
+					modelRestaurar($(this).data('id'), "{{ route('operadoras.ajax.apagados.index') }}",
 						function(){							
 							dataTable.row( $(this).parents('tr') ).remove().draw('page');					
 						} 	
