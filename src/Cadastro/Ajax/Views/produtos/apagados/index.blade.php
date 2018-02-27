@@ -1,32 +1,37 @@
 @extends( Config::get('app.templateMasterJson' , 'templates.templateMasterJson')  )
 
 @push('styles') 
-<style>
-	.content-wrapper {		
-		background-color:#ffc9c9;
-	}
-	.box , .box-footer{		
-		background: #fee;
-	}
-</style>
+	<style>
+		.content-wrapper {	background-color:#ffc9c9;	}
+		.box , .box-footer{		background: #fee;	}
+	</style>
 @endpush
 
 @section( Config::get('app.templateMasterContent' , 'content')  )
 
 <section class="content-header">
 	<h1>
-		<span id="div-titulo-pagina">
-			Listagem dos Produtos Apagadas	
-		</span>
-		<small id="div-small-content-header" ></small>
-		<small style="float: right;">		</small>
+		<span id="div-titulo-pagina">Listagem dos Produtos Apagadas	</span>		
 	</h1>
 </section>	
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box box-success" id="div-box"> 
-				<?php echo $dataTable; ?>      
+				<div class="box-body" style="padding-top: 5px; padding-bottom: 3px;">
+					<table class="table table-bordered table-striped table-hover" id="datatable">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th pesquisavel>Nome</th>
+								<th>Valor</th>
+								<th>Observações</th>
+								<th>Desconto Máximo</th>												
+								<th class="align-center" style="width:120px">Ações</th>
+							</tr>
+						</thead>
+					</table>
+				</div>  
 			</div>
 		</div>
 	</div>
