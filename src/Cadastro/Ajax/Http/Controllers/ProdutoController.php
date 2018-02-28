@@ -12,7 +12,7 @@ class ProdutoController extends DataTableJsonController
     protected $model;
     protected $name = "Produto";
     protected $view = "cadastroAjax::produtos";
-    protected $route = "produtosAjax";
+    protected $route = "produtos.ajax";
     
     
     public function __construct(Produto $produto){

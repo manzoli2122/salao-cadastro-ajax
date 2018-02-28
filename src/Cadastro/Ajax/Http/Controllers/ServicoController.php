@@ -11,7 +11,7 @@ class ServicoController extends DataTableJsonController
     protected $model;
     protected $name = "Servico";
     protected $view = "cadastroAjax::servicos";
-    protected $route = "servicosAjax";
+    protected $route = "servicos.ajax";
     
     public function __construct(Servico $servico){
         $this->model = $servico;

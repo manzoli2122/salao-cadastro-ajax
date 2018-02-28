@@ -11,7 +11,7 @@ class OperadoraController extends DataTableJsonController
     protected $model;
     protected $name = "Operadora";
     protected $view = "cadastroAjax::operadoras";
-    protected $route = "operadorasAjax";
+    protected $route = "operadoras.ajax";
 
 
 
