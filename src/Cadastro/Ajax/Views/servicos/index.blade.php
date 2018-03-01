@@ -46,6 +46,78 @@
 	<script>
 
 		var pagianIndex = document.getElementById("div-pagina").innerHTML;		
+		
+/*
+		function toJSONString( form ) {
+			var obj = {};
+			var elements = form.querySelectorAll( "input, select, textarea" );
+			for( var i = 0; i < elements.length; ++i ) {
+				var element = elements[i];
+				var name = element.name;
+				var value = element.value;
+	
+				if( name ) {
+					obj[ name ] = value;
+				}
+			}
+	
+			return JSON.stringify( obj );
+		}
+*/	
+		
+		function testedoido() {
+			var servicos = [];
+
+
+			var obj = {};
+			var elements = document.forms["form-model"].querySelectorAll( "input, select, textarea" );
+			for( var i = 0; i < elements.length; ++i ) {
+				var element = elements[i];
+				var name = element.name;
+				var value = element.value;	
+				if( name ) {
+					obj[ name ] = value;
+				}
+			}
+
+			servicos.push(obj);
+
+
+
+			//document.getElementById("body").innerHTML =  JSON.stringify( obj.nome ) ;	
+			console.log(obj);
+			
+			console.log(servicos);
+
+
+
+			servicos.push({"name":"Bruno"});
+
+			console.log(servicos[1]);
+
+			for ( i in obj) {
+				//console.log(obj[i]);
+				//x += myObj.cars[i];
+			}
+
+			var dados = $('#form-model').serializeArray() ;
+			var dados2 = JSON.stringify( $('#form-model').serializeArray() ) ;
+			
+			var myObj = JSON.parse(dados2);
+			
+			var json = {};
+
+			jQuery.each(dados, function() {
+                json[this.name] = this.value || '';
+            });
+			
+			//console.log( dados2 );
+			//console.log( dados2 );
+			//console.log("ok");
+			//console.log(json);
+		}
+		
+		
 		function modelIndexDataTableFunction() {
 			var dataTable = datatablePadrao('#datatable', {
 				order: [[ 1, "asc" ]],

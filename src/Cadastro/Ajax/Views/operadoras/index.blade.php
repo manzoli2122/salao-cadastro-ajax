@@ -84,7 +84,7 @@
 				$('[btn-editar]').click(function (){					
 					modelEditar($(this).data('id'), "{{ route('operadoras.ajax.index') }}",
 						function(){							
-							comboboxFunction();						
+												
 						} 	
 					);                 
 				});
