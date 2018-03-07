@@ -43,7 +43,7 @@ class Produto extends Model implements DataTableJson
             'nome' => 'required|between:2,100',    
             'valor' => 'required|numeric|min:0',
             'desconto_maximo' => 'required|numeric|min:0|max:100',
-            'observacoes' => 'nullable|alpha_num',                            
+            'observacoes' => 'nullable|string',                            
         ];
     }
 

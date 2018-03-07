@@ -49,7 +49,7 @@ class Servico extends Model  implements DataTableJson
             'categoria' => "required", 
             'duracao_aproximada' => 'digits_between:0,300',
             'desconto_maximo' => "required|numeric|min:0|max:100", 
-            'observacoes' => 'nullable|alpha_num',                             
+            'observacoes' => 'nullable|string',                             
         ];
     }
 
