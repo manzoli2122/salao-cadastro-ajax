@@ -39,11 +39,11 @@
                             </button>
                         @endpermissao
                         @permissao('operadoras-editar')
-                            <button type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('operadoras.ajax.index') }}' )" remover-apos-excluir  title="Editar">
+                            <button  style="margin-left: 5px;" type="button" class="btn btn-success"  onclick="modelEditar( {{$model->id}} , '{{ route('operadoras.ajax.index') }}' )" remover-apos-excluir  title="Editar">
                                 <i class="fa fa-pencil"></i> Editar
                             </button>                        
                         @endpermissao
-                        <button type="button" class="btn btn-default"  onclick="modelVoltarIndex()" > <i class="fa fa-reply"></i> Voltar </button>            
+                        <button   style="margin-left: 5px;" type="button" class="btn btn-default"  onclick="modelVoltarIndex()" > <i class="fa fa-reply"></i> Voltar </button>            
                     </div>
                 </div>
             </div>

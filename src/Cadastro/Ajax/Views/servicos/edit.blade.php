@@ -14,7 +14,7 @@
                     </form>
                     <div class="box-footer align-right">  
                         <button type="button" class="btn btn-default"  onclick="modelVoltarIndex()" > <i class="fa fa-reply"></i> Voltar </button> 
-                        <button class="btn btn-success" onclick="modelUpdateAjax( {{$model->id}}  , '{{ route('servicos.ajax.index') }}' , 
+                        <button  style="margin-left: 5px;" class="btn btn-success" onclick="modelUpdateAjax( {{$model->id}}  , '{{ route('servicos.ajax.index') }}' , 
                             function(){comboboxFunction();})
                             
                             " ><i class="fa fa-check"></i> Salvar</button>
