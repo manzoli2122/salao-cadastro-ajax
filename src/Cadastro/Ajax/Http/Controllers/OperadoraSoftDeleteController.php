@@ -17,22 +17,12 @@ class OperadoraSoftDeleteController extends SoftDeleteJsonController
 
     public function __construct(Operadora $operadora){
         
-        
         $this->model = $operadora;
         $this->middleware('auth');
 
         $this->middleware('permissao:operadoras')->only([ 'index' , 'show' ]) ;        
-        //$this->middleware('permissao:operadoras-cadastrar')->only([ 'create' , 'store']);
-       // $this->middleware('permissao:operadoras-editar')->only([ 'edit' , 'update']);
         $this->middleware('permissao:operadoras-soft-delete')->only([ 'destroy' ]);
 
-        //$this->middleware('perfil:Admin')->only([ 'indexApagados' , 'showApagado' ]) ;
-
-        
-       // $this->middleware('permissao:operadoras-soft-delete')->only([ 'destroySoft' ]);
-        //$this->middleware('permissao:operadoras-restore')->only([ 'restore' ]);        
-        //$this->middleware('permissao:operadoras-admin-permanete-delete')->only([ 'destroy' ]);
-        //$this->middleware('permissao:operadoras-apagados')->only([ 'indexApagados' , 'showApagado']) ;
         
     }   
 
