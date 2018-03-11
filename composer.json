@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=7.0.0",         
-        "manzoli2122/all": "dev-master" , 
-        "manzoli2122/opensource": "dev-master"
+        "manzoli2122/all": "2.0.1" , 
+        "manzoli2122/opensource": "1.0.0"
     },
     
     "autoload": {
@@ -28,7 +28,6 @@
             ]
             
         }
-    },
-    "minimum-stability": "dev"
+    }
     
 }
