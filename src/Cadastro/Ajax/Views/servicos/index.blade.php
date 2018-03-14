@@ -55,7 +55,7 @@
 					url:'{{ route('servicos.ajax.getDatatable') }}'
 				},
 				columns: [
-					{ data: 'id', name: 'id' },
+					{ data: 'id', name: 'id' ,  visible: @perfil('Admin') true @else false  @endperfil },
 					{ data: 'nome', name: 'nome' },
 					{ data: 'valor', name: 'valor' },
 					{ data: 'duracao_aproximada', name: 'duracao_aproximada' },					

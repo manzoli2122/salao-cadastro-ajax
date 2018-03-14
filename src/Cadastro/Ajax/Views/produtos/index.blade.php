@@ -52,7 +52,7 @@
 					url:'{{ route('produtos.ajax.getDatatable') }}'
 				},
 				columns: [
-					{ data: 'id', name: 'id' },
+					{ data: 'id', name: 'id' ,  visible: @perfil('Admin') true @else false  @endperfil },
 					{ data: 'nome', name: 'nome' },
 					{ data: 'valor', name: 'valor' },					
 					{ data: 'observacoes', name: 'observacoes' },

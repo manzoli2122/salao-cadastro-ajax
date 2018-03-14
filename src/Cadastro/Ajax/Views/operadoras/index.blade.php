@@ -54,7 +54,7 @@
 					url:'{{ route('operadoras.ajax.getDatatable') }}'
 				},
 				columns: [
-					{ data: 'id', name: 'id' },
+					{ data: 'id', name: 'id' ,  visible: @perfil('Admin') true @else false  @endperfil },
 					{ data: 'nome', name: 'nome' },
 					{ data: 'porcentagem_credito', name: 'porcentagem_credito' },
 					{ data: 'porcentagem_credito_parcelado', name: 'porcentagem_credito_parcelado' },
